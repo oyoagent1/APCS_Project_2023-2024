@@ -91,6 +91,8 @@ animations = [{
 }]
 
 [node name="Player" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_3kbf7")
 tile_size = 32
 
@@ -101,8 +103,15 @@ shape = SubResource("RectangleShape2D_eaaqx")
 zoom = Vector2(5.02, 5.02)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+modulate = Color(0.768627, 0.45098, 1, 1)
+top_level = true
+target_position = Vector2(0, 32)
+collision_mask = 4
+hit_from_inside = true
+collide_with_areas = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_1jmyv")
-animation = &"down"
+animation = &"up"
+frame_progress = 0.48307

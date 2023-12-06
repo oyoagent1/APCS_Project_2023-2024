@@ -9,6 +9,7 @@ var tween: Tween
 var ray: RayCast2D
 var facing: Vector2
 var sprite: AnimatedSprite2D
+var dialog_box: Control
 
 enum directions {UP, DOWN, LEFT, RIGHT}
 
@@ -17,6 +18,7 @@ enum directions {UP, DOWN, LEFT, RIGHT}
 func _ready():
 	ray = $RayCast2D
 	sprite = $AnimatedSprite2D
+	dialog_box = $"UI Layer/Dialog_Box"
 	tween = create_tween()
 
 func on_tween_finished():
@@ -51,6 +53,9 @@ func _get_input():
 	elif move_inputs.y > 0:
 		move_inputs.y = 1
 		facing = Vector2(0,1)
+
+	if Input.is_action_just_pressed("ui_accept"):
+		interact()
 	
 
 func _draw():
@@ -86,3 +91,10 @@ func move(amount: Vector2):
 		tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 		tween.tween_property(self, "position", new_pos, 0.1)
 		tween.connect("finished", on_tween_finished)
+
+func open_dialog():
+	dialog_box.show()
+	get_tree().paused = true
+
+func interact():
+	open_dialog()	

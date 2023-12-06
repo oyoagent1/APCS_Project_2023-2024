@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dw50r7kcb5i5v"]
+[gd_scene load_steps=14 format=3 uid="uid://dw50r7kcb5i5v"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_3kbf7"]
 [ext_resource type="Texture2D" uid="uid://bf0bgyl62j445" path="res://Art/Robin_V1_Small_4dir.png" id="2_kcbtk"]
+[ext_resource type="PackedScene" uid="uid://b7tj1faoph4q" path="res://Scenes/Player/Dialog_Box.tscn" id="3_jx6x6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eaaqx"]
 size = Vector2(32, 32)
@@ -91,6 +92,7 @@ animations = [{
 }]
 
 [node name="Player" type="Area2D"]
+y_sort_enabled = true
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_3kbf7")
@@ -100,7 +102,7 @@ tile_size = 32
 shape = SubResource("RectangleShape2D_eaaqx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5.02, 5.02)
+zoom = Vector2(4.5, 4.5)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 modulate = Color(0.768627, 0.45098, 1, 1)
@@ -114,4 +116,8 @@ collide_with_areas = true
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_1jmyv")
 animation = &"up"
-frame_progress = 0.48307
+frame_progress = 0.535608
+
+[node name="UI Layer" type="CanvasLayer" parent="."]
+
+[node name="Dialog_Box" parent="UI Layer" instance=ExtResource("3_jx6x6")]

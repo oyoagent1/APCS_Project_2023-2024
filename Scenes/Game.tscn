@@ -1,9 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://7nurw7b6xo7o"]
+[gd_scene load_steps=30 format=3 uid="uid://7nurw7b6xo7o"]
 
 [ext_resource type="PackedScene" uid="uid://cuhg5eng73va" path="res://Scenes/Dev.tscn" id="1_sabj4"]
 [ext_resource type="Texture2D" uid="uid://cc40n3hahw76q" path="res://Art/Tileset_collider_test.png" id="1_xicwy"]
+[ext_resource type="Script" path="res://Scripts/Interactable.gd" id="2_s85lv"]
 [ext_resource type="PackedScene" uid="uid://c4hcs1llduebm" path="res://Scenes/Interactables/Sign.tscn" id="3_2ntae"]
 [ext_resource type="Texture2D" uid="uid://b7j6avnv2ldyy" path="res://Art/chainsaw-man-pochita-1024708933-Sheet.png" id="4_7g7jc"]
+[ext_resource type="Texture2D" uid="uid://c3ubkd8ec6nt8" path="res://Art/Very Strange dog.png" id="6_5f1qa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jruob"]
 texture = ExtResource("1_xicwy")
@@ -180,6 +182,8 @@ y_sort_enabled = true
 [node name="Sign" parent="." instance=ExtResource("3_2ntae")]
 process_mode = 1
 position = Vector2(-32, 8)
+collision_layer = 6
+script = ExtResource("2_s85lv")
 
 [node name="TileMap" type="TileMap" parent="."]
 process_mode = 1
@@ -207,3 +211,7 @@ scale = Vector2(0.320001, 0.24)
 sprite_frames = SubResource("SpriteFrames_sm7q2")
 autoplay = "default"
 frame_progress = 0.573179
+
+[node name="VeryStrangeDog" type="Sprite2D" parent="."]
+position = Vector2(-32, 8)
+texture = ExtResource("6_5f1qa")

@@ -7,6 +7,7 @@ var move_inputs: Vector2
 var moving: bool = false
 var tween: Tween
 var ray: RayCast2D
+var interaction_ray: RayCast2D
 var facing: Vector2
 var sprite: AnimatedSprite2D
 var dialog_box: Control
@@ -17,6 +18,7 @@ enum directions {UP, DOWN, LEFT, RIGHT}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ray = $RayCast2D
+	interaction_ray = $InteractionRayCast2D
 	sprite = $AnimatedSprite2D
 	dialog_box = $"UI Layer/Dialog_Box"
 	tween = create_tween()
@@ -26,7 +28,7 @@ func on_tween_finished():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	ray.position = position
+	updateRays()
 	_get_input()
 	move(move_inputs)
 	queue_redraw()
@@ -60,14 +62,11 @@ func _get_input():
 
 func _draw():
 	pass
-	#draw_line(Vector2.ZERO, Vector2.ZERO + (facing * (tile_size/2)), Color.RED, 4)
-	#draw_line(to_local(ray.position), to_local(ray.position + ray.target_position), Color.BLUE, 2)
-
+	draw_circle(to_local(interaction_ray.position + interaction_ray.target_position), 2, Color.ALICE_BLUE)
 func move(amount: Vector2):
 	if amount == Vector2.ZERO:
 		return
 	if !moving:
-		print(facing)
 		if facing.x < 0:
 			sprite.play("left")
 		elif facing.x > 0:
@@ -86,7 +85,6 @@ func move(amount: Vector2):
 			print("COLLISION")
 			print(position, new_pos, ray.position, ray.target_position)
 			return
-		print(position, new_pos)
 		moving = true
 		tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 		tween.tween_property(self, "position", new_pos, 0.1)
@@ -94,7 +92,19 @@ func move(amount: Vector2):
 
 func open_dialog():
 	dialog_box.show()
+	var json
+	var file = FileAccess.open("res://Dialog/Pochita.json", FileAccess.READ)
+	var content = file.get_as_text()
+	json = JSON.parse_string(content)
+	dialog_box.display_dialog(json.name, json.text)
 	get_tree().paused = true
 
 func interact():
-	open_dialog()	
+	if interaction_ray.is_colliding():
+		open_dialog()
+
+func updateRays():
+	ray.position = position
+	interaction_ray.position = position
+	var new_pos = position + (facing * tile_size)
+	interaction_ray.target_position = new_pos - position

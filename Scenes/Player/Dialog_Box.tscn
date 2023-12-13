@@ -6,7 +6,6 @@
 
 [node name="Dialog_Box" type="Control"]
 process_mode = 2
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,7 +57,7 @@ offset_right = 416.0
 offset_bottom = 592.0
 color = Color(0, 0, 0, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="NameTextBox" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 552.0
@@ -68,7 +67,7 @@ theme_override_fonts/normal_font = ExtResource("2_8rbv5")
 theme_override_font_sizes/normal_font_size = 33
 text = "Belle and Sebastian"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+[node name="MainTextBox" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 72.0
 offset_top = 640.0

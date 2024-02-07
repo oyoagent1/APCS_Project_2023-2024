@@ -1,0 +1,165 @@
+[gd_scene load_steps=14 format=3 uid="uid://2113nj6d4723"]
+
+[ext_resource type="Script" path="res://Scripts/Combat_Player.gd" id="1_atg08"]
+[ext_resource type="Texture2D" uid="uid://bf0bgyl62j445" path="res://Art/Robin_V1_Small_4dir.png" id="1_y785b"]
+[ext_resource type="FontFile" uid="uid://bflpcussr06u" path="res://Fonts/PetscopWide.ttf" id="3_7wk2v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebn5j"]
+size = Vector2(14, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d20aa"]
+atlas = ExtResource("1_y785b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o20ng"]
+atlas = ExtResource("1_y785b")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrmmo"]
+atlas = ExtResource("1_y785b")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b0mx"]
+atlas = ExtResource("1_y785b")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we7ma"]
+atlas = ExtResource("1_y785b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07x3k"]
+atlas = ExtResource("1_y785b")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2tc7"]
+atlas = ExtResource("1_y785b")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc3mo"]
+atlas = ExtResource("1_y785b")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ch28n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d20aa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o20ng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrmmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b0mx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we7ma")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07x3k")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2tc7")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc3mo")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="Combat_Player" type="CharacterBody2D"]
+script = ExtResource("1_atg08")
+speed = 300.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_ebn5j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_ch28n")
+animation = &"up"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4.5, 4.5)
+drag_left_margin = 0.3
+drag_top_margin = 0.4
+drag_right_margin = 0.3
+drag_bottom_margin = 0.4
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D"]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 8.0
+scale = Vector2(1.00323, 1)
+text = "Combat"
+fit_content = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 384.0
+offset_bottom = 256.0
+theme_override_constants/separation = 5
+
+[node name="MEMBER1" type="RichTextLabel" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_7wk2v")
+theme_override_font_sizes/normal_font_size = 46
+text = "	Party 1!"
+fit_content = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/VBoxContainer/MEMBER1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MEMBER2" type="RichTextLabel" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_7wk2v")
+theme_override_font_sizes/normal_font_size = 46
+text = "	Party 2!"
+fit_content = true
+
+[node name="MEMBER3" type="RichTextLabel" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_7wk2v")
+theme_override_font_sizes/normal_font_size = 46
+text = "	Party 3!"
+fit_content = true
+
+[node name="MEMBER4" type="RichTextLabel" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_7wk2v")
+theme_override_font_sizes/normal_font_size = 46
+text = "	Party 4!"
+fit_content = true

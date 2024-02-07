@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Party" load_steps=7 format=3 uid="uid://bcc4fqaqoooaa"]
+
+[ext_resource type="Script" path="res://Resources/Party.gd" id="1_h3e68"]
+[ext_resource type="Script" path="res://Resources/Party_Member.gd" id="1_uhtoq"]
+
+[sub_resource type="Resource" id="Resource_o6bf8"]
+script = ExtResource("1_uhtoq")
+name = "Belle"
+atk = 1
+def = 2
+hp = 3
+max_hp = 3
+
+[sub_resource type="Resource" id="Resource_ftwqo"]
+script = ExtResource("1_uhtoq")
+name = "sebastian"
+atk = 2
+def = 4
+hp = 6
+max_hp = 8
+
+[sub_resource type="Resource" id="Resource_t1if2"]
+script = ExtResource("1_uhtoq")
+name = "sus"
+atk = 0
+def = 0
+hp = 0
+max_hp = 0
+
+[sub_resource type="Resource" id="Resource_twnqj"]
+script = ExtResource("1_uhtoq")
+name = "among us"
+atk = 1234
+def = 5678
+hp = 910
+max_hp = 1112
+
+[resource]
+script = ExtResource("1_h3e68")
+member_0 = SubResource("Resource_o6bf8")
+member_1 = SubResource("Resource_ftwqo")
+member_2 = SubResource("Resource_t1if2")
+member_3 = SubResource("Resource_twnqj")

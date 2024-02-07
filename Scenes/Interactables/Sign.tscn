@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4hcs1llduebm"]
+[gd_scene load_steps=4 format=3 uid="uid://c4hcs1llduebm"]
 
+[ext_resource type="Script" path="res://Scripts/Interactable.gd" id="1_6e1bs"]
 [ext_resource type="Texture2D" uid="uid://bhc8emxypgx32" path="res://Art/Sign.png" id="1_imbmp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxr3t"]
@@ -10,6 +11,8 @@ y_sort_enabled = true
 position = Vector2(0, 8)
 collision_layer = 4
 collision_mask = 7
+script = ExtResource("1_6e1bs")
+dialog = "res://Dialog/Pochita.json"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)

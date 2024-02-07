@@ -5,12 +5,16 @@ var move_inputs: Vector2
 @export var tile_size: int = 16
 @export var speed = 0.1
 var moving: bool = false
+var scene_changing: bool = false
 var tween: Tween
+var fade_tween: Tween
 var ray: RayCast2D
 var interaction_ray: RayCast2D
 var facing: Vector2
 var sprite: AnimatedSprite2D
 var dialog_box: Control
+var game: Node
+var fade: CanvasModulate
 
 enum directions {UP, DOWN, LEFT, RIGHT}
 
@@ -22,6 +26,9 @@ func _ready():
 	sprite = $AnimatedSprite2D
 	dialog_box = $"UI Layer/Dialog_Box"
 	tween = create_tween()
+	fade_tween = create_tween()
+	game = get_parent().get_parent()
+	fade = $CanvasModulate
 
 func on_tween_finished():
 	moving = false
@@ -66,7 +73,7 @@ func _draw():
 func move(amount: Vector2):
 	if amount == Vector2.ZERO:
 		return
-	if !moving:
+	if !moving && !scene_changing:
 		if facing.x < 0:
 			sprite.play("left")
 		elif facing.x > 0:
@@ -84,24 +91,36 @@ func move(amount: Vector2):
 			print(ray.get_collider())
 			print("COLLISION")
 			print(position, new_pos, ray.position, ray.target_position)
+			if ray.get_collider().has_method("get_scene"):
+				var json
+				var file = FileAccess.open(ray.get_collider().get_scene(), FileAccess.READ)
+				var content = file.get_as_text()
+				json = JSON.parse_string(content)
+				fade_tween = create_tween().set_trans(Tween.TRANS_LINEAR)
+				fade_tween.tween_property(fade, "color", Color.BLACK, 0.5)
+				scene_changing = true
+				await fade_tween.finished
+				game.change_scene(json.path, json.id)
+				position.x = json.x
+				position.y = json.y
+				fade_tween = create_tween().set_trans(Tween.TRANS_LINEAR)
+				fade_tween.tween_property(fade, "color", Color.WHITE, 0.2)
+				scene_changing = false
+				print(json.x, " ", json.y, " ", position)
 			return
 		moving = true
 		tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 		tween.tween_property(self, "position", new_pos, 0.1)
 		tween.connect("finished", on_tween_finished)
 
-func open_dialog():
+func open_dialog(filepath: String):
 	dialog_box.show()
-	var json
-	var file = FileAccess.open("res://Dialog/Pochita.json", FileAccess.READ)
-	var content = file.get_as_text()
-	json = JSON.parse_string(content)
-	dialog_box.display_dialog(json.name, json.text)
+	dialog_box.display_dialog(filepath)
 	get_tree().paused = true
 
 func interact():
-	if interaction_ray.is_colliding():
-		open_dialog()
+	if interaction_ray.is_colliding() && interaction_ray.get_collider().has_method("get_dialog"):
+		open_dialog(interaction_ray.get_collider().get_dialog())
 
 func updateRays():
 	ray.position = position

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8dc2qftekxqb"]
+
+[ext_resource type="Script" path="res://Scripts/Interactable.gd" id="1_g82fy"]
+[ext_resource type="Texture2D" uid="uid://bjy34er2738yk" path="res://Art/TBWTAS.png" id="2_bqh0v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwypq"]
+size = Vector2(32, 32)
+
+[node name="TBWTAS" type="Area2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_g82fy")
+dialog = "res://Dialog/B&S.json"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jwypq")
+
+[node name="Tbwtas" type="Sprite2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
+texture = ExtResource("2_bqh0v")

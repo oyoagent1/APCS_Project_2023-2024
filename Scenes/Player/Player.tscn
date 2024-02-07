@@ -103,6 +103,14 @@ shape = SubResource("RectangleShape2D_eaaqx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4.5, 4.5)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.4
+drag_right_margin = 0.3
+drag_bottom_margin = 0.4
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 modulate = Color(0.768627, 0.45098, 1, 1)
@@ -129,3 +137,5 @@ frame_progress = 0.535608
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
 [node name="Dialog_Box" parent="UI Layer" instance=ExtResource("3_jx6x6")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]

@@ -1,217 +1,69 @@
-[gd_scene load_steps=30 format=3 uid="uid://7nurw7b6xo7o"]
+[gd_scene load_steps=10 format=3 uid="uid://c8c6on1hn3syb"]
 
-[ext_resource type="PackedScene" uid="uid://cuhg5eng73va" path="res://Scenes/Dev.tscn" id="1_sabj4"]
-[ext_resource type="Texture2D" uid="uid://cc40n3hahw76q" path="res://Art/Tileset_collider_test.png" id="1_xicwy"]
-[ext_resource type="Script" path="res://Scripts/Interactable.gd" id="2_s85lv"]
-[ext_resource type="PackedScene" uid="uid://c4hcs1llduebm" path="res://Scenes/Interactables/Sign.tscn" id="3_2ntae"]
-[ext_resource type="Texture2D" uid="uid://b7j6avnv2ldyy" path="res://Art/chainsaw-man-pochita-1024708933-Sheet.png" id="4_7g7jc"]
-[ext_resource type="Texture2D" uid="uid://c3ubkd8ec6nt8" path="res://Art/Very Strange dog.png" id="6_5f1qa"]
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_rwsm2"]
+[ext_resource type="Script" path="res://Resources/Party_Member.gd" id="2_qjipt"]
+[ext_resource type="Script" path="res://Resources/Party.gd" id="3_aq0yf"]
+[ext_resource type="PackedScene" uid="uid://b4lu01g2omtq5" path="res://Scenes/Party_Info_Menu.tscn" id="4_hu6gx"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jruob"]
-texture = ExtResource("1_xicwy")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+[sub_resource type="Resource" id="Resource_vc5ud"]
+script = ExtResource("2_qjipt")
+name = ""
+atk = 0
+def = 0
+hp = 0
+max_hp = 0
 
-[sub_resource type="TileSet" id="TileSet_cp3ig"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 4
-physics_layer_0/collision_mask = 7
-sources/0 = SubResource("TileSetAtlasSource_jruob")
+[sub_resource type="Resource" id="Resource_evest"]
+script = ExtResource("2_qjipt")
+name = ""
+atk = 0
+def = 0
+hp = 0
+max_hp = 0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ddmil"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(0, 0, 220, 289)
+[sub_resource type="Resource" id="Resource_t8jwy"]
+script = ExtResource("2_qjipt")
+name = ""
+atk = 0
+def = 0
+hp = 0
+max_hp = 0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4vh64"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(220, 0, 220, 289)
+[sub_resource type="Resource" id="Resource_5s3kh"]
+script = ExtResource("2_qjipt")
+name = ""
+atk = 0
+def = 0
+hp = 0
+max_hp = 0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hs3m2"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(440, 0, 220, 289)
+[sub_resource type="Resource" id="Resource_2a5do"]
+script = ExtResource("3_aq0yf")
+member_0 = SubResource("Resource_vc5ud")
+member_1 = SubResource("Resource_evest")
+member_2 = SubResource("Resource_t8jwy")
+member_3 = SubResource("Resource_5s3kh")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6xq1x"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(660, 0, 220, 289)
+[node name="Game" type="Node2D" node_paths=PackedStringArray("loaded_scene", "loaded_player", "party_menu")]
+process_mode = 3
+position = Vector2(1, 0)
+script = ExtResource("1_rwsm2")
+loaded_scene = NodePath("LS")
+loaded_player = NodePath("PLAYER")
+party_menu = NodePath("PARTY_MENU/CanvasLayer/Party_Info_Menu")
+party = SubResource("Resource_2a5do")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g3fqj"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(880, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g5uhn"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(1100, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r6rf5"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(1320, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vjrr0"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(1540, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lxqsp"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(1760, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ayk0v"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(1980, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0pv51"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(2200, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fyp3r"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(2420, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5cesm"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(2640, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rtjgy"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(2860, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qiehx"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(3080, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cfxs2"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(3300, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5jll0"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(3520, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mgftm"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(3740, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_srhtj"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(3960, 0, 220, 289)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7gk21"]
-atlas = ExtResource("4_7g7jc")
-region = Rect2(4180, 0, 220, 289)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_sm7q2"]
-animations = [{
-"frames": [{
-"duration": 0.01,
-"texture": SubResource("AtlasTexture_ddmil")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4vh64")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hs3m2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6xq1x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g3fqj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g5uhn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r6rf5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vjrr0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lxqsp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ayk0v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0pv51")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fyp3r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5cesm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rtjgy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qiehx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cfxs2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5jll0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mgftm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_srhtj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7gk21")
-}],
-"loop": true,
-"name": &"default",
-"speed": 30.0
-}]
-
-[node name="Game" type="Node2D"]
-y_sort_enabled = true
-
-[node name="Sign" parent="." instance=ExtResource("3_2ntae")]
-process_mode = 1
-position = Vector2(-32, 8)
-collision_layer = 6
-script = ExtResource("2_s85lv")
-
-[node name="TileMap" type="TileMap" parent="."]
-process_mode = 1
-position = Vector2(16, -16)
-tile_set = SubResource("TileSet_cp3ig")
-format = 2
-layer_0/z_index = -3
-layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 131071, 0, 0, 131070, 0, 0, 131069, 0, 0, 131068, 0, 0, 65532, 65536, 0, 65533, 0, 0, -3, 65536, 0, -2, 65536, 0, -1, 65536, 0, -65537, 131072, 0, -131072, 131072, 0, -65536, 65536, 0, 65534, 0, 0, 65531, 0, 0, -65535, 65536, 0, -65534, 65536, 0, 2, 0, 0, 1, 0, 0, 65535, 0, 0, 131067, 0, 0, -131071, 131072, 0, -131070, 131072, 0, -131069, 0, 0, -131068, 0, 0, -65532, 0, 0, 4, 0, 0, 3, 0, 0, 65539, 0, 0, 65538, 0, 0, 131074, 0, 0, 131073, 0, 0, 131072, 0, 0, 196607, 0, 0, 196606, 0, 0, -65533, 0, 0, 65537, 0, 0, -65538, 131072, 0, -65539, 131072, 0, -65540, 131072, 0, -4, 131072, 0, 65540, 0, 0, 131076, 0, 0, 131075, 0, 0, 196611, 0, 0, 196610, 0, 0, 196609, 0, 0, 196608, 0, 0, 262143, 0, 0, 262142, 0, 0, 262141, 0, 0, 262140, 0, 0, 262139, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 196612, 0, 0, 262148, 0, 0, 262147, 0, 0, 327677, 0, 0, 327676, 0, 0, 327675, 0, 0, 327674, 0, 0, 262138, 0, 0, 196602, 0, 0, 131066, 0, 0, 65530, 0, 0, -5, 0, 0, -65541, 0, 0, -65542, 0, 0, -6, 0, 0, -131078, 0, 0, -131077, 0, 0, -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -196605, 0, 0, -196606, 0, 0, -196607, 0, 0, -196608, 0, 0, -196611, 0, 0, -196610, 0, 0, -196612, 0, 0, -196613, 0, 0, -196614, 0, 0, -196615, 0, 0, -262140, 0, 0, -196604, 0, 0)
-
-[node name="Dev" parent="." instance=ExtResource("1_sabj4")]
+[node name="LS" type="Node" parent="."]
 process_mode = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="PLAYER" type="Node" parent="."]
 process_mode = 1
-position = Vector2(80, 16)
-scale = Vector2(0.320001, 0.24)
-sprite_frames = SubResource("SpriteFrames_sm7q2")
-autoplay = "default"
-frame_progress = 0.573179
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
-process_mode = 2
-position = Vector2(-149.999, 66.6667)
-scale = Vector2(0.320001, 0.24)
-sprite_frames = SubResource("SpriteFrames_sm7q2")
-autoplay = "default"
-frame_progress = 0.573179
+[node name="PARTY_MENU" type="Node" parent="."]
+process_mode = 1
 
-[node name="VeryStrangeDog" type="Sprite2D" parent="."]
-position = Vector2(-32, 8)
-texture = ExtResource("6_5f1qa")
+[node name="CanvasLayer" type="CanvasLayer" parent="PARTY_MENU"]
+layer = 2
+
+[node name="Party_Info_Menu" parent="PARTY_MENU/CanvasLayer" instance=ExtResource("4_hu6gx")]
+visible = false

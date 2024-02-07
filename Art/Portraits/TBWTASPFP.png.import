@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pndmbslpadtq"
-path="res://.godot/imported/the-boy-with-the-arab-strap-1029084224.jpg-21b14a657330f67c57954c7901724dda.ctex"
+uid="uid://c40tcbbqpw3xo"
+path="res://.godot/imported/TBWTASPFP.png-76443a9b9cd358925355e7d234ffd19c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/the-boy-with-the-arab-strap-1029084224.jpg"
-dest_files=["res://.godot/imported/the-boy-with-the-arab-strap-1029084224.jpg-21b14a657330f67c57954c7901724dda.ctex"]
+source_file="res://Art/Portraits/TBWTASPFP.png"
+dest_files=["res://.godot/imported/TBWTASPFP.png-76443a9b9cd358925355e7d234ffd19c.ctex"]
 
 [params]
 

@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4lu01g2omtq5"]
+
+[ext_resource type="Script" path="res://Scripts/Party_Info_Menu.gd" id="1_anhru"]
+[ext_resource type="PackedScene" uid="uid://c6jwcrxnpfetl" path="res://Scenes/Party_Menu_Block.tscn" id="2_645xg"]
+
+[node name="Party_Info_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_anhru")
+
+[node name="Tint" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 864.0
+color = Color(0.172549, 0.172549, 0.172549, 0.258824)
+
+[node name="Party_Menu_Block1" parent="." instance=ExtResource("2_645xg")]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 288.0
+offset_bottom = 464.0
+color = Color(0, 0.627451, 0.996078, 1)
+
+[node name="Party_Menu_Block2" parent="." instance=ExtResource("2_645xg")]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 32.0
+offset_right = 560.0
+offset_bottom = 464.0
+color = Color(1, 0, 0, 1)
+
+[node name="Party_Menu_Block3" parent="." instance=ExtResource("2_645xg")]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 32.0
+offset_right = 832.0
+offset_bottom = 464.0
+color = Color(0, 1, 0, 1)
+
+[node name="Party_Menu_Block4" parent="." instance=ExtResource("2_645xg")]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 32.0
+offset_right = 1104.0
+offset_bottom = 464.0
+color = Color(1, 1, 0, 1)

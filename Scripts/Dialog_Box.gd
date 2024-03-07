@@ -26,7 +26,6 @@ func _process(delta):
 
 		
 func display_dialog(filepath: String):
-
 	var json
 	var file = FileAccess.open(filepath, FileAccess.READ)
 	var content = file.get_as_text()

@@ -6,8 +6,6 @@ var sprite: AnimatedSprite2D
 
 @export var speed = 1.0
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite = $AnimatedSprite2D
@@ -18,8 +16,7 @@ func _process(delta):
 	move(delta, move_inputs)
 
 func _get_input():
-	move_inputs.x = Input.get_axis("Move Left ", "Move Right")
-	move_inputs.y = Input.get_axis("Move Up", "Move Down")
+	move_inputs = Input.get_vector("Move Left ", "Move Right", "Move Up", "Move Down")
 
 	if move_inputs.x < 0:
 		facing = Vector2(-1,0)

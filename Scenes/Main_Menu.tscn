@@ -42,7 +42,6 @@ offset_left = 32.0
 offset_top = 112.0
 offset_right = 416.0
 offset_bottom = 176.0
-text = "Char_Menu_test *Not working*"
 
 [node name="Button3" type="Button" parent="CanvasLayer/Control/ColorRect"]
 layout_mode = 0
@@ -50,6 +49,7 @@ offset_left = 32.0
 offset_top = 192.0
 offset_right = 416.0
 offset_bottom = 256.0
+text = "Combat Demo"
 
 [node name="Button4" type="Button" parent="CanvasLayer/Control/ColorRect"]
 layout_mode = 0
@@ -81,3 +81,4 @@ offset_bottom = 608.0
 
 [connection signal="pressed" from="CanvasLayer/Control/ColorRect/Button" to="." method="play"]
 [connection signal="pressed" from="CanvasLayer/Control/ColorRect/Button2" to="." method="char_menu"]
+[connection signal="pressed" from="CanvasLayer/Control/ColorRect/Button3" to="." method="_on_button_3_pressed"]

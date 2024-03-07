@@ -30,7 +30,7 @@ max_hp = 0
 [sub_resource type="Resource" id="Resource_twnqj"]
 script = ExtResource("1_uhtoq")
 name = "among us"
-atk = 1234
+atk = 0
 def = 5678
 hp = 910
 max_hp = 1112

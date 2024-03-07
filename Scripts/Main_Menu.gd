@@ -14,3 +14,7 @@ func play():
 
 func char_menu():
 	game.change_scene("res://Scenes/Party_Info_Menu.tscn", "Party_Info_Menu")
+
+func _on_button_3_pressed():
+	game.change_scene("res://Scenes/Maps/dev_combat_01.tscn", "dev_01")
+	game.change_player("res://Scenes/Player/Combat_Player.tscn", "Player")

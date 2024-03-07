@@ -43,6 +43,7 @@ member_0 = SubResource("Resource_vc5ud")
 member_1 = SubResource("Resource_evest")
 member_2 = SubResource("Resource_t8jwy")
 member_3 = SubResource("Resource_5s3kh")
+members = null
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("loaded_scene", "loaded_player", "party_menu")]
 process_mode = 3

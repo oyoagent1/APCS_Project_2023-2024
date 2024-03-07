@@ -5,11 +5,23 @@ extends Node
 @export var party_menu: Node
 var enable_player: bool 
 @export var party: Party
+# The index in the array, NOT the actual partymember
+var active_party_member: int
+var can_switch_player: bool
+
+# Signals
+signal s_party_member_changed(data: int)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	active_party_member = 0
+	can_switch_player = true
 	#party = Party.new()
 	load_party("res://Resources/dev_party.tres")
 	#load the menu
+	connect("s_party_member_changed", test1)
+	set_active_player(1)
+	test1(1)
 	change_scene("res://Scenes/Main_Menu.tscn", "Main_Menu")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
@@ -37,13 +49,23 @@ func change_player(scenepath: String, id: String):
 	print(loaded_player, find_child(id))
 
 func display_party_menu(display: bool):
-	if !party_menu.visible:
+	# make sure the game isn't already paused and 
+	if !party_menu.visible && !get_tree().paused:
 		party_menu.show()
+		# Refresh Party data
 		party_menu.load_party_data(party)
 		pause_game()
-	else:
+	elif party_menu.visible:
 		party_menu.hide()
 		unpause_game()
+
+func get_active_player():
+	return party.members[active_party_member]
+
+func set_active_player(player_index:int):
+	if (can_switch_player):
+		active_party_member = player_index
+		s_party_member_changed.emit(1)
 
 func load_party(path):
 	party = ResourceLoader.load(path)
@@ -59,3 +81,6 @@ func unpause_game():
 
 func get_party() -> Party:
 	return party
+
+func test1(data:int):
+	print(data)
